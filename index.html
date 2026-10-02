@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Surprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="bg-hearts">
+    <div class="heart">💖</div>
+    <div class="heart">✨</div>
+    <div class="heart">🌸</div>
+    <div class="heart">💕</div>
+    <div class="heart">✨</div>
+  </div>
+
+  <div class="container">
+    
+    <!-- STEP 1: PASSWORD -->
+    <section id="step-password">
+      <div class="badge">Secret Access 🔒</div>
+      <h2>On What date did my favourite person arrive? ✨</h2>
+      <p class="subtitle">Enter your birth date(D/MM/Y) to enter</p>
+      
+      <div class="input-wrapper">
+        <input type="password" id="passcode-input" readonly placeholder="•••••••">
+      </div>
+
+      <div class="layout-two-col">
+        <div class="collage-wrapper">
+          <div class="envelope-back"></div>
+          
+          <div class="main-polaroid">
+            <div class="photo-frame">
+              <img src="images/leftphoto.jpg" alt="Special Memory">
+            </div>
+            <div class="kiss-mark">💋</div>
+          </div>
+
+          <div class="note-card">
+            <p>just for you✨</p>
+          </div>
+
+          <div class="small-polaroid">
+            <div class="photo-frame">
+              <img src="images/rightphoto.jpg" alt="Memory">
+            </div>
+          </div>
+        </div>
+
+        <div class="keypad-wrapper">
+          <div class="keypad">
+            <button type="button" class="key-btn" onclick="pressKey('1')">1</button>
+            <button type="button" class="key-btn" onclick="pressKey('2')">2</button>
+            <button type="button" class="key-btn" onclick="pressKey('3')">3</button>
+            <button type="button" class="key-btn" onclick="pressKey('4')">4</button>
+            <button type="button" class="key-btn" onclick="pressKey('5')">5</button>
+            <button type="button" class="key-btn" onclick="pressKey('6')">6</button>
+            <button type="button" class="key-btn" onclick="pressKey('7')">7</button>
+            <button type="button" class="key-btn" onclick="pressKey('8')">8</button>
+            <button type="button" class="key-btn" onclick="pressKey('9')">9</button>
+            <button type="button" class="key-btn action-btn" onclick="clearPin()">C</button>
+            <button type="button" class="key-btn" onclick="pressKey('0')">0</button>
+            <button type="button" class="key-btn action-btn" onclick="deletePin()">⌫</button>
+          </div>
+        </div>
+      </div>
+      
+      <button type="button" class="btn" onclick="checkPassword()">Unlock Experience ✨</button>
+      <p id="error-msg" class="error hidden">Incorrect passcode, try again!</p>
+    </section>
+
+    <!-- STEP 2: PHOTOS -->
+    <section id="step-photos" class="hidden">
+      <div class="badge">Birthday Boy 🎈</div>
+      <h2>Happy Birthday, love! ❤️</h2>
+      <p class="subtitle">My favorite pictures of you...</p>
+
+      <div class="polaroid-grid">
+        <div class="polaroid-card rotate-left">
+          <div class="photo-box">
+            <img src="images/pic1.jpg" alt="Memory 1">
+          </div>
+          <p class="polaroid-caption">Best Smile ✨</p>
+        </div>
+
+        <div class="polaroid-card rotate-right">
+          <div class="photo-box">
+            <img src="images/pic2.jpg" alt="Memory 2">
+          </div>
+          <p class="polaroid-caption">Favourite View 🌸</p>
+        </div>
+
+        <div class="polaroid-card rotate-left">
+          <div class="photo-box">
+            <img src="images/pic3.jpg" alt="Memory 3">
+          </div>
+          <p class="polaroid-caption">Can't help but stare🫦</p>
+        </div>
+
+        <div class="polaroid-card rotate-right">
+          <div class="photo-box">
+            <img src="images/pic4.jpg" alt="Memory 4">
+          </div>
+          <p class="polaroid-caption">Sunlight in human form 💫</p>
+        </div>
+      </div>
+
+      <button type="button" class="btn" onclick="showCakeSection()">Click Here for Your Cake 🎂</button>
+    </section>
+
+    <!-- STEP 3: CAKE ONLY IN CENTER -->
+    <section id="step-cake" class="hidden">
+      <div class="badge">Birthday Edition 🎂</div>
+      <h2>Tap the cake or disc to start ✨</h2>
+      <p class="subtitle">A little celebration for my favourite person...</p>
+
+      <div class="cake-container" onclick="handleInteractiveTap()">
+        <div class="cake">
+          <div class="plate"></div>
+          
+          <div class="layer layer-bottom">
+            <div class="drip drip-bottom"></div>
+            <div class="raspberry r-b-1"></div>
+            <div class="raspberry r-b-2"></div>
+            <div class="cherry c-b-1"></div>
+          </div>
+          
+          <div class="layer layer-top">
+            <div class="drip drip-top"></div>
+            <div class="cherry c-t-1"></div>
+            <div class="cherry c-t-2"></div>
+            <div class="raspberry r-t-1"></div>
+          </div>
+
+          <div class="candle candle-left">
+            <div class="flame flame-1"></div>
+            <div class="smoke smoke-1 hidden"></div>
+          </div>
+          <div class="candle candle-center">
+            <div class="flame flame-2"></div>
+            <div class="smoke smoke-2 hidden"></div>
+          </div>
+          <div class="candle candle-right">
+            <div class="flame flame-3"></div>
+            <div class="smoke smoke-3 hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <p id="cake-tap-hint" class="tap-hint">☝️ tap to play music & blow candles!</p>
+
+      <button type="button" id="read-letter-btn" class="btn hidden" onclick="showLetterSection()">Read My Letter 💌</button>
+    </section>
+
+    <!-- STEP 4: FINAL LETTER -->
+    <section id="step-letter" class="hidden">
+      <div class="badge"> ❤️</div>
+      
+      <div class="wishes-card">
+        <h3 class="handwritten-title">Dearest Zayaan,</h3>
+        <p class="letter-body">
+          Having you in my life is one of the greatest blessings I could ever ask for. You are my biggest strength, my safest place and the most constant comfort in my world. Behind that strong, fierce personality lies the softest, most caring, and sweetest heart~~a heart that I am so lucky to hold.<br><br>
+          Thank you for being the person who saved me when things were tough, keeping my life from falling into dark places and filling it with so much light instead. You inspire me every single day to work harder, push past my limits and believe in myself even when I doubt my own potential.<br><br>
+          We still have a long way to go and so many dreams left to fight for, but knowing I get to walk this path step by step with you makes every struggle worth it. You make my entire world brighter just by being in it❤️.<br><br>
+          <br>
+          Happy Birthday Kuchupuchuu😗❤️!
+        </p>
+      </div>
+
+      <p class="subtitle" style="margin-top: 15px;">Forever yours 💕</p>
+    </section>
+
+  </div>
+
+  <!-- FIXED MUSIC DISC IN BOTTOM RIGHT CORNER OF WEBSITE -->
+  <div class="website-disc-fixed hidden" id="website-disc" onclick="handleInteractiveTap()">
+    <div class="vinyl-record" id="vinyl-record">
+      <div class="vinyl-groove"></div>
+      <div class="vinyl-label">
+        <span>🎵</span>
+      </div>
+    </div>
+    <div class="turntable-arm" id="turntable-arm"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
